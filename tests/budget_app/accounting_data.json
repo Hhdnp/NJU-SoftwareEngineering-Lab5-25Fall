@@ -1,0 +1,51 @@
+{
+  "transactions": [
+    {
+      "transaction_id": "txn_1761896884723",
+      "amount": 199.0,
+      "category": "餐饮",
+      "date": "2025-10-31",
+      "type": "支出",
+      "note": "搓了一顿"
+    },
+    {
+      "transaction_id": "txn_1761896910106",
+      "amount": 39.8,
+      "category": "医疗",
+      "date": "2025-10-10",
+      "type": "支出",
+      "note": "买了一盒感冒药"
+    },
+    {
+      "transaction_id": "txn_1761896931463",
+      "amount": 12.0,
+      "category": "交通",
+      "date": "2025-10-12",
+      "type": "支出",
+      "note": "地铁"
+    },
+    {
+      "transaction_id": "txn_1761897806144",
+      "amount": 89.0,
+      "category": "娱乐",
+      "date": "2025-10-15",
+      "type": "支出",
+      "note": "唱歌"
+    },
+    {
+      "transaction_id": "txn_1761897856763",
+      "amount": 199.0,
+      "category": "餐饮",
+      "date": "2025-10-29",
+      "type": "支出",
+      "note": "搓了一顿"
+    }
+  ],
+  "budgets": [
+    {
+      "budget_id": "budget_1",
+      "amount": 5000,
+      "period": "monthly"
+    }
+  ]
+}

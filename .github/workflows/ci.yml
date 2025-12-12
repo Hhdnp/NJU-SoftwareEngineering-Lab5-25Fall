@@ -1,0 +1,45 @@
+# 工作流名称
+name: Budget App CI
+
+# 触发工作流的事件
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+# 工作流包含的任务
+jobs:
+  test:
+    # 运行此任务的操作系统环境
+    runs-on: ubuntu-latest
+
+    # 任务包含的步骤
+    steps:
+    # 第一步：检出代码库
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 第二步：设置 Python 环境
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    # 第三步：安装依赖
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        # 确保安装了 tkinter 的依赖 (虽然我们 Mock 了它，但有些导入可能会检查)
+        # 在 Ubuntu 上 tkinter 通常是 python3-tk，但 GitHub Actions 的 Python 环境通常包含标准库
+        # 如果测试中使用了 matplotlib 的 tkagg 后端，可能需要 xvfb，但我们 Mock 了它，所以应该没问题。
+
+    # 第四步：运行测试
+    - name: Run tests with pytest
+      # 设置 PYTHONPATH 确保测试能找到代码
+      env:
+        PYTHONPATH: ${{ github.workspace }}/tests/budget_app
+      run: |
+        # 运行所有测试，包括单元测试、集成测试和模糊测试
+        pytest tests/

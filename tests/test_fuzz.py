@@ -76,6 +76,7 @@ class TestFuzzing:
     # =========================================================================
     # 3. 持久化层模糊测试 (Persistence Fuzzing)
     # =========================================================================
+    @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
     @given(file_content=st.binary())
     def test_fuzz_data_loading_garbage(self, tmp_path, file_content):
         """
